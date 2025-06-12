@@ -6,11 +6,11 @@ import { Component, Input, OnChanges, ViewChild } from '@angular/core';
   templateUrl: './bar-chart.component.html',
   styleUrl: './bar-chart.component.scss'
 })
-export class BarChartComponent implements OnChanges {
+export class BarChartComponent { //implements OnChanges {
   // @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
   // === Inputs for customization ===
-  @Input() data: number[] = [];
+  /*@Input() data: number[] = [];
   @Input() labels: string[] = [];
   @Input() xAxisLabel = '';
   @Input() yAxisLabel = '';
@@ -76,5 +76,5 @@ export class BarChartComponent implements OnChanges {
     };
 
     this.chart?.update();
-  }
+  }*/
 }
