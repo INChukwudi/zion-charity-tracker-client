@@ -1,0 +1,153 @@
+<div class="content-page">
+  <div class="content-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 my-3">
+          <div class="d-flex flex-row align-items-center justify-content-between">
+            <div class="navbar-breadcrumb">
+              <h1 class="mb-1">My Dashboard</h1>
+              <!--<p class="mb-md-0">See your appointment schedules summary</p>-->
+            </div>
+
+            <div id="view-event">
+              <div class="mb-4"><button routerLink="/dashboard/create-appointment" class="btn btn-primary">New Donation Record</button></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--<div class="tab-extra active" id="search-with-button">
+        <div class="d-flex flex-wrap align-items-center mb-4">
+          <div class="iq-search-bar search-device mb-0 pr-3">
+            <form action="#" class="searchbox">
+              <input type="text" class="text search-input" placeholder="Search...">
+            </form>
+          </div>
+          <div class="float-sm-right"><a href="page-new-event.html" class="btn btn-primary pr-5 position-relative" style="height: 40px;">Add Event<span class="event-add-btn" style="height: 40px;"><i class="ri-add-line"></i></span></a></div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="event-content">
+          <div id="event3" class="tab-pane fade active show">
+            <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
+              <!--<div>
+                <h3 class="mb-3">Save Your Time Using Workflow</h3>
+                <p class="mb-md-0">Choose Your Own Workflow From Given Below.<br>Or Create Your Own Workflow</p>
+              </div>
+              <div class="create-workform">
+                <a href="#create-event" data-toggle="modal" data-target="#create-event" class="btn btn-primary pr-5 position-relative">Create Workflow<span class="event-add-btn"><i class="ri-add-line"></i></span></a>
+              </div>-->
+            </div>
+            <div class="row">
+              <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="card card-block card-stretch card-height">
+                  <div class="card-body rounded work-detail work-detail-info">
+                    <div class="icon iq-icon-box-2 mb-3 rounded">
+                      <i class="las la-boxes"></i>
+                    </div>
+                    <h4 class="mb-2">₦1,200,000.00</h4>
+                    <p class="mb-3 card-description">Total Donations</p>
+                    <div class="pt-2">
+                      <a routerLink="/dashboard/appointments" class="btn btn-info mr-3 px-4">View Donations</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="card card-block card-stretch card-height">
+                  <div class="card-body rounded work-detail work-detail-danger">
+                    <div class="icon iq-icon-box-2 mb-3 rounded">
+                      <i class="las la-stopwatch"></i>
+                    </div>
+                    <h4 class="mb-2">51</h4>
+                    <p class="mb-3 card-description">Total Beneficiaries</p>
+                    <div class="pt-2">
+                      <a routerLink="/dashboard/appointments" class="btn btn-danger mr-3 px-4">View Beneficiaries</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-12">
+                <div class="card card-block card-stretch card-height">
+                  <div class="card-body rounded work-detail work-detail-success">
+                    <div class="icon iq-icon-box-2 mb-3 rounded">
+                      <i class="las la-bookmark"></i>
+                    </div>
+                    <h4 class="mb-2">62</h4>
+                    <p class="mb-3 card-description">Follow Up Visits</p>
+                    <div class="pt-2">
+                      <a routerLink="/dashboard/zones" class="btn btn-success mr-3 px-4">View Visits</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--<div class="col-xl-3 col-lg-4 col-md-6">
+                <div class="card card-block card-stretch card-height">
+                  <div class="card-body rounded work-detail work-detail-warning">
+                    <div class="icon iq-icon-box-2 mb-3 rounded">
+                      <i class="lab la-ioxhost"></i>
+                    </div>
+                    <h4 class="mb-2">7</h4>
+                    <p class="mb-3 card-description">Total Groups</p>
+                    <div class="pt-2">
+                      <a href="page-workflow.html" class="btn btn-warning mr-3 px-4">View Groups</a>
+                    </div>
+                  </div>
+                </div>
+              </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade create-workform" id="create-event" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <div class="popup text-left">
+            <h4 class="mb-3">Create a Workflow</h4>
+            <div class="mb-3">
+              <h5>When this happens</h5>
+              <div class="content">
+                <div class="form-group mb-0">
+                  <select name="type" class="selectpicker form-control" data-style="py-0">
+                    <option>Select..</option>
+                    <option>New event is scheduled</option>
+                    <option>Before event starts</option>
+                    <option>Event starts</option>
+                    <option>Event ends</option>
+                    <option>Event is canceled</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <h5 class="mb-3">Do this</h5>
+              <div class="form-group  mb-0">
+                <select name="type" class="selectpicker form-control" data-style="py-0">
+                  <option>Select..</option>
+                  <option>Send email to invitee</option>
+                  <option>Send email to host</option>
+                  <option>Send text to invitee</option>
+                  <option>Send text to host</option>
+                </select>
+              </div>
+            </div>
+            <div class="mt-3">
+              <div class="d-flex flex-wrap align-items-ceter justify-content-center">
+                <div class="btn btn-primary mr-4" data-dismiss="modal">Cancel</div>
+                <div class="btn btn-outline-primary" data-dismiss="modal">Save</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
