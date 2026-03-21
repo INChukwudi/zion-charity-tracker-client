@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
 import { IndexComponent } from './index/index.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
-import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
-import { ZonesComponent } from './zones/zones.component';
+import { CreateDonationRecordComponent } from './create-donation-record/create-donation-record.component';
+import { BeneficiariesComponent } from './beneficiaries/beneficiaries.component';
 
 export const dashboardRoutes : Routes = [
   {
@@ -17,7 +17,7 @@ export const dashboardRoutes : Routes = [
       },
       {
         path: 'zones',
-        component: ZonesComponent,
+        component: BeneficiariesComponent,
         title: 'Zones | Zion Charity Tracking System',
         pathMatch: 'full',
       },
@@ -27,9 +27,9 @@ export const dashboardRoutes : Routes = [
         title: 'Appointments | Zion Charity Tracking System'
       },
       {
-        path: 'create-appointment',
-        component: CreateAppointmentComponent,
-        title: 'Create Appointment Schedule | Zion Charity Tracking System'
+        path: 'create-donation-record',
+        component: CreateDonationRecordComponent,
+        title: 'Create Donation Record | Zion Charity Tracking System'
       }
     ]
   }

@@ -5,441 +5,124 @@
         <div class="col-lg-12 my-3">
           <div class="d-flex align-items-center justify-content-between">
             <div class="navbar-breadcrumb">
-              <h1 class="mb-1">My Appointments</h1>
-              <p class="mb-md-0">See your all your appointment schedules</p>
+              <h1 class="mb-1">My Donations</h1>
+              <p class="mb-md-0">Track donation records and follow-up visits from the live API.</p>
             </div>
 
-            <div class="col-lg-2 col-md-4" id="view-event">
+            <div id="view-event">
               <div class="mb-4">
-                <a routerLink="/dashboard/create-appointment" class="btn btn-primary">New Schedule</a>
+                <a routerLink="/dashboard/create-donation-record" class="btn btn-primary">New Donation Record</a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!--<div class="tab-extra active" id="search-with-button">
-        <div class="d-flex flex-wrap align-items-center mb-4">
-          <div class="iq-search-bar search-device mb-0 pr-3">
-            <form action="#" class="searchbox">
-              <input type="text" class="text search-input" placeholder="Search...">
-            </form>
-          </div>
-          <div class="float-sm-right"><a href="page-new-event.html" class="btn btn-primary pr-5 position-relative" style="height: 40px;">Add Event<span class="event-add-btn" style="height: 40px;"><i class="ri-add-line"></i></span></a></div>
-        </div>
-      </div>-->
     </div>
   </div>
 
   <div class="container">
-    <div id="event2" class="">
-      <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
-        <ul class="d-flex nav nav-pills text-center schedule-tab" id="schedule-pills-tab" role="tablist">
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#schedule01" data-extras="#filter-none" role="tab"
-               aria-selected="false">All</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active show" data-toggle="pill" href="#schedule1" data-extras="#filter-button"
-               role="tab" aria-selected="true">Upcoming</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#schedule3" data-extras="#filter-button" role="tab"
-               aria-selected="false">Past</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#schedule4" data-placement="daterange"
-               data-extras="#filter-button" role="tab" aria-selected="false">
-              Date range
-            </a>
-          </li>
-        </ul>
-        <div class="d-flex flex-wrap align-items-center">
-          <div id="filter-none" class="filter-extra">
-          </div>
-          <div id="filter-button" class="select-dropdown input-prepend input-append filter-dropdown filter-extra active">
-            <div class="btn-group">
-              <label data-toggle="dropdown" class="mb-0">
-                <span class="dropdown-toggle search-query selet-caption btn bg-white">Filter By</span><span
-                class="search-replace"></span>
-                <span class="caret"><!--icon--></span>
-              </label>
-              <!--<ul class="dropdown-menu p-3 border-none">
-                <li>
-                  <div class="item mb-2">
-                    <div class="checkbox">
-                      <input type="checkbox" class="checkbox-input mr-3" id="checkbox1">
-                      <label for="checkbox1" class="mb-0">All Teams</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="item mb-2">
-                    <div class="checkbox">
-                      <input type="checkbox" class="checkbox-input mr-3" id="checkbox2">
-                      <label for="checkbox2" class="mb-0">All Event Types</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="item mb-2">
-                    <div class="checkbox">
-                      <input type="checkbox" class="checkbox-input mr-3" id="checkbox3">
-                      <label for="checkbox3" class="mb-0">Active Events</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="item mb-2">
-                    <div class="checkbox">
-                      <input type="checkbox" class="checkbox-input mr-3" id="checkbox4">
-                      <label for="checkbox4" class="mb-0">All IDs</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="item">
-                    <div class="checkbox">
-                      <input type="checkbox" class="checkbox-input mr-3" id="checkbox5">
-                      <label for="checkbox5" class="mb-0">All Invitee Email</label>
-                    </div>
-                  </div>
-                </li>
-              </ul>-->
-            </div>
+    <div class="row mb-4">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <div class="card h-100">
+          <div class="card-body">
+            <h6 class="text-muted mb-2">Donation records</h6>
+            <h3 class="mb-0">{{ totalDonationRecords() }}</h3>
           </div>
         </div>
       </div>
-      <div class="schedule-content">
-        <div id="schedule01" class="tab-pane fade">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="card card-block card-stretch">
-                <div class="card-body">
-                  <div class="d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="d-flex flex-wrap align-items-center">
-                      <div class="date mr-3"><h4 class="text-info">19 May</h4></div>
-                      <div class="border-left-event pl-3">
-                        <div class="media align-items-top">
-                          <h5 class="mb-3">Prof. Mark Fikayo</h5>
-                          <div class="badge badge-color badge-success ml-3">DONE</div>
-                        </div>
-                        <div class="media align-items-center">
-                          <p class="mb-0 pr-3"><i class="las la-clock mr-2 text-info"></i>May 18, 2025, 07: 39 AM</p>
-                          <p class="mb-0"><i class="las la-map-marker mr-2 text-info"></i>1 Maputo Street, Luanda,
-                            Angola</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center list-action mt-lg-0 mt-2">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="card card-block card-stretch">
-                <div class="card-body">
-                  <div class="d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="d-flex flex-wrap align-items-center">
-                      <div class="date mr-3"><h4 class="text-danger">19 May</h4></div>
-                      <div class="border-left-event pl-3">
-                        <div class="media align-items-top">
-                          <h5 class="mb-3">Mr John-Francis Adigwe</h5>
-                          <div class="badge badge-color badge-primary ml-3">In Progress</div>
-                        </div>
-                        <div class="media align-items-center">
-                          <p class="mb-0 pr-3"><i class="las la-clock mr-2 text-danger"></i>09:45 Pm - 10 Pm</p>
-                          <p class="mb-0"><i class="las la-map-marker mr-2 text-danger"></i>1 Circle Street
-                            Leominster, Ma 01453</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center list-action mt-lg-0 mt-2">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" href="#"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <div class="card card-block card-stretch">
-                <div class="card-body">
-                  <div class="d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="d-flex flex-wrap align-items-center">
-                      <div class="date mr-3"><h4 class="text-success">19 May</h4></div>
-                      <div class="border-left-event pl-3">
-                        <div class="media align-items-top">
-                          <h5 class="mb-3">Mr Stephen Nwoke & Family</h5>
-                          <div class="badge badge-color badge-info ml-3">Upcoming</div>
-                        </div>
-                        <div class="media align-items-center">
-                          <p class="mb-0 pr-3"><i class="las la-clock mr-2 text-success"></i>10 Pm - 10:30 Pm</p>
-                          <p class="mb-0"><i class="las la-map-marker mr-2 text-success"></i>1 Circle Street
-                            Leominster, Ma 01453</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="d-flex align-items-center list-action mt-lg-0 mt-2">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" href="#"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="schedule1" class="tab-pane fade active show">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail-info">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-info">19</h1>
-                      <h5 class="text-info">May</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Mr Stephen Nwoke & Family</h4>
-                  <p class="mb-3 card-description">5 people</p>
-                  <p class="mb-2 text-info"><i class="las la-clock mr-3"></i>May 18, 2025, 08:00 AM</p>
-                  <p class="mb-2 text-info">
-                    <i class="las la-map-marker mr-3"></i>1 Circle Street Leominster, MA 01453</p>
-                  <p class="mb-2 text-info"><i class="las la-bookmark mr-3"></i>Massachusetts Zone</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail-danger">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-danger">19</h1>
-                      <h5 class="text-danger">May</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" ><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Mr Simon Lucky and Miss Felicity Mark</h4>
-                  <p class="mb-3 card-description">2 People</p>
-                  <p class="mb-2 text-danger"><i class="las la-clock mr-3"></i>May 18, 2025, 08:03 AM</p>
-                  <p class="mb-2 text-danger"><i class="las la-map-marker mr-3"></i>10 Viola Street Lancashire, MA
-                    EWN Y61</p>
-                  <p class="mb-2 text-danger"><i class="las la-bookmark mr-3"></i>Manchester Zone</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail-success">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-success">19</h1>
-                      <h5 class="text-success">May</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Mrs Martina Ekwe</h4>
-                  <p class="mb-3 card-description">1 Person</p>
-                  <p class="mb-2 text-success"><i class="las la-clock mr-3"></i>May 18, 2025, 10:30 AM</p>
-                  <p class="mb-2 text-success"><i class="las la-map-marker mr-3"></i>52 Jack Walsh Street, Maryland, BA</p>
-                  <p class="mb-2 text-success"><i class="las la-bookmark mr-3"></i>Baltimore Zone</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="schedule2" class="tab-pane fade">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail1">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-info">25</h1>
-                      <h5 class="text-info">Dec</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" href="#"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Calendify Homepage Final Edits</h4>
-                  <p class="mb-3 card-description">Enhance Calendify with beautiful user interface and UI changes to
-                    ensure high conversion rate.</p>
-                  <p class="mb-2 text-info"><i class="las la-clock mr-3"></i>08 Pm - 09 Pm</p>
-                  <p class="mb-0 text-info"><i class="las la-map-marker mr-3"></i>1 Circle Street Leominster, Ma 01453
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail2 active">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-danger">07</h1>
-                      <h5 class="text-danger">Jan</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" href="#"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Calendify Promotional Campaign</h4>
-                  <p class="mb-3 card-description">Schedule meetings and promotional campaigns for your internal team
-                    by assigning task and roles.</p>
-                  <p class="mb-2 text-danger"><i class="las la-clock mr-3"></i>09:45 Pm - 10 Pm</p>
-                  <p class="mb-0 text-danger"><i class="las la-map-marker mr-3"></i>1 Circle Street Leominster, Ma
-                    01453</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail3">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-success">15</h1>
-                      <h5 class="text-success">Jan</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" href="#"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Exploring Timezone Detection</h4>
-                  <p class="mb-3 card-description">An internal team meeting to brief on a feature where the meeting
-                    will be seen in viewer’s time zone with automatic timezone detection in Calendify. </p>
-                  <p class="mb-2 text-success"><i class="las la-clock mr-3"></i>10 Pm - 10:30 Pm</p>
-                  <p class="mb-0 text-success"><i class="las la-map-marker mr-3"></i>1 Circle Street Leominster, Ma
-                    01453</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="schedule3" class="tab-pane fade">
-          <div class="row">
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail1">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-info">19</h1>
-                      <h5 class="text-info">May</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Prof. Mark Fikayo</h4>
-                  <p class="mb-3 card-description">From 09:10 AM to 09:48 AM (38 Minutes).</p>
-                  <p class="mb-3 text-info"><i class="las la-map-marker mr-3"></i>1 Maputo Street, Luanda, Angola</p>
-                  <p class="mb-2 text-info"><i class="las la-bookmark mr-3"></i>Angola Zone</p>
-                </div>
-              </div>
-            </div>
-            <!--<div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail2 active">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-danger">16</h1>
-                      <h5 class="text-danger">Dec</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" href="#"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Meetup-Meeing With Team of Designer</h4>
-                  <p class="mb-3 card-description">Lorem Ipsum Dolor Sit Amet, Consecetetur Adip Iscing Elit. Pharetra
-                    Luctus Ultricies Velit Ut. Id Tincidunt Mattis Sed Duis.</p>
-                  <p class="mb-2 text-danger"><i class="las la-clock mr-3"></i>09:45 Pm - 10 Pm</p>
-                  <p class="mb-0 text-danger"><i class="las la-map-marker mr-3"></i>1 Circle Street Leominster, Ma
-                    01453</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="card card-block card-stretch card-height">
-                <div class="card-body rounded event-detail event-detail3">
-                  <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div>
-                      <h1 class="text-success">27</h1>
-                      <h5 class="text-success">Dec</h5>
-                    </div>
-                    <div class="d-flex align-items-center list-action">
-                      <a class="badge mr-3" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Edit" href="#"><i class="ri-edit-box-line"></i></a>
-                      <a class="badge" data-toggle="tooltip" data-placement="top" title=""
-                         data-original-title="Delete" href="#"><i class="ri-delete-bin-line"></i></a>
-                    </div>
-                  </div>
-                  <h4 class="my-2">Project Plan-Do Anaylsis Of Project</h4>
-                  <p class="mb-3 card-description">Lorem Ipsum Dolor Sit Amet, Consecetetur Adip Iscing Elit. Pharetra
-                    Luctus Ultricies Velit Ut. Id Tincidunt Mattis Sed Duis.</p>
-                  <p class="mb-2 text-success"><i class="las la-clock mr-3"></i>10 Pm - 10:30 Pm</p>
-                  <p class="mb-0 text-success"><i class="las la-map-marker mr-3"></i>1 Circle Street Leominster, Ma
-                    01453</p>
-                </div>
-              </div>
-            </div>-->
-          </div>
-        </div>
-        <div id="schedule4" data-toggle="daterange" class="tab-pane fade">
-          <div class="card card-block card-stretch mb-4">
-            <div class="card-body mb-5 border-bottom">
-              <p class="mb-0">18 Mar – 24 Mar 2025</p>
-            </div>
-            <div class="card-body text-center">
-              <div class="d-inline-block m-auto date-event">
-                <div class="icon iq-icon-box-2 m-auto rounded border">
-                  <i class="las la-calendar"></i>
-                </div>
-                <p class="mt-4">No Appointments In This Range</p>
-              </div>
-            </div>
+      <div class="col-md-6">
+        <div class="card h-100">
+          <div class="card-body">
+            <h6 class="text-muted mb-2">Upcoming follow-up visits</h6>
+            <h3 class="mb-0">{{ totalAppointments() }}</h3>
           </div>
         </div>
       </div>
     </div>
+
+    @if (errorMessage()) {
+      <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+    }
+
+    @if (isLoading()) {
+      <div class="card">
+        <div class="card-body text-center py-5">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-3 mb-0">Loading donations and appointments...</p>
+        </div>
+      </div>
+    } @else {
+      <div class="row">
+        <div class="col-lg-7 mb-4">
+          <div class="card card-block card-stretch h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                  <h4 class="mb-1">Recent donation records</h4>
+                  <p class="text-muted mb-0">Latest beneficiaries and contributions.</p>
+                </div>
+              </div>
+
+              @if (donationRecords().length === 0) {
+                <p class="text-muted mb-0">No donation records have been created yet.</p>
+              } @else {
+                @for (record of donationRecords(); track record.id) {
+                  <div class="border rounded p-3 mb-3">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between mb-2">
+                      <h5 class="mb-1">{{ donationOwner(record) }}</h5>
+                      <span class="badge badge-light">{{ record.mode }}</span>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 mb-2 mb-md-0">
+                        <p class="mb-1"><i class="las la-money-bill mr-2 text-info"></i>{{ record.amount | currency:'NGN':'symbol':'1.0-0' }}</p>
+                        <p class="mb-1"><i class="las la-receipt mr-2 text-info"></i>{{ record.donationCategory }}</p>
+                        <p class="mb-0"><i class="las la-map-marker mr-2 text-info"></i>{{ record.zoneName }}</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p class="mb-1"><i class="las la-calendar mr-2 text-info"></i>{{ record.createdAt | date:'mediumDate' }}</p>
+                        <p class="mb-1"><i class="las la-phone mr-2 text-info"></i>{{ record.phoneNumber }}</p>
+                        <p class="mb-0"><i class="las la-user-clock mr-2 text-info"></i>{{ record.followUpCount }} follow-up visits</p>
+                      </div>
+                    </div>
+                  </div>
+                }
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5 mb-4">
+          <div class="card card-block card-stretch h-100">
+            <div class="card-body">
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <div>
+                  <h4 class="mb-1">Upcoming follow-up visits</h4>
+                  <p class="text-muted mb-0">Appointments scheduled from the API.</p>
+                </div>
+              </div>
+
+              @if (followUpAppointments().length === 0) {
+                <p class="text-muted mb-0">No follow-up visits are currently scheduled.</p>
+              } @else {
+                @for (appointment of followUpAppointments(); track appointment.id) {
+                  <div class="border rounded p-3 mb-3">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                      <h5 class="mb-0">{{ appointment.beneficiaryName || 'Unassigned beneficiary' }}</h5>
+                      <span class="badge" [ngClass]="appointmentBadgeClass(appointment.status)">
+                        {{ appointment.status }}
+                      </span>
+                    </div>
+                    <p class="mb-1"><i class="las la-bookmark mr-2 text-success"></i>{{ appointment.zoneName }}</p>
+                    <p class="mb-1"><i class="las la-clock mr-2 text-success"></i>{{ appointment.scheduledFor | date:'medium' }}</p>
+                    <p class="mb-0"><i class="las la-comments mr-2 text-success"></i>{{ appointment.contactMethod }}</p>
+                  </div>
+                }
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    }
   </div>
 </div>
 

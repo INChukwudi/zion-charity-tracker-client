@@ -13,39 +13,59 @@
           <div class="card">
             <div class="card-body text-center">
               <div class="my-3">
-                <img src="/assets/images/logo.png" width="100" alt="">
+                <img src="/assets/images/logo.png" width="100" alt="Zion Charity Tracker logo">
               </div>
               <h2>Sign In</h2>
               <p>Login to stay connected.</p>
-              <form class="mb-3">
+
+              @if (errorMessage()) {
+                <div class="alert alert-danger text-left" role="alert">
+                  {{ errorMessage() }}
+                </div>
+              }
+
+              <form class="mb-3" [formGroup]="signInForm" (ngSubmit)="submit()">
                 <div class="row">
                   <div class="col-lg-12">
-                    <div class="floating-input form-group">
-                      <input class="form-control" type="text" name="email" id="email" required />
+                    <div class="floating-input form-group text-left">
+                      <input class="form-control" type="email" formControlName="email" id="email" autocomplete="email" />
                       <label class="form-label" for="email">Email</label>
                     </div>
+                    @if (showError('email')) {
+                      <small class="text-danger d-block text-left mb-3">
+                        @if (signInForm.controls.email.hasError('required')) {
+                          Email is required.
+                        } @else {
+                          Enter a valid email address.
+                        }
+                      </small>
+                    }
                   </div>
+
                   <div class="col-lg-12">
-                    <div class="floating-input form-group">
-                      <input class="form-control" type="password" name="password" id="password" required />
+                    <div class="floating-input form-group text-left">
+                      <input class="form-control" type="password" formControlName="password" id="password" autocomplete="current-password" />
                       <label class="form-label" for="password">Password</label>
                     </div>
+                    @if (showError('password')) {
+                      <small class="text-danger d-block text-left mb-3">Password is required.</small>
+                    }
                   </div>
-                  <div class="col-lg-6">
+
+                  <div class="col-lg-8">
                     <div class="custom-control custom-checkbox mb-3 text-left">
-                      <input type="checkbox" class="custom-control-input" id="customCheck1">
-                      <label class="custom-control-label" for="customCheck1">Remember Me</label>
+                      <input type="checkbox" class="custom-control-input" id="rememberMe" formControlName="rememberMe">
+                      <label class="custom-control-label" for="rememberMe">Remember Me</label>
                     </div>
                   </div>
-                  <div class="col-lg-6">
-                    <a href="auth-recoverpw.html" class="text-primary float-right">Forgot Password?</a>
-                  </div>
+                  <!--<div class="col-lg-6 text-right">
+                    <span class="text-muted small">Use the email and password you created on the server.</span>
+                  </div>-->
                 </div>
-                <!--<button type="submit" class="btn btn-primary">Sign In</button>-->
-                <a routerLink="/dashboard" class="btn btn-primary">Sign In</a>
-                <!--<p class="mt-3">
-                  Create an Account <a href="auth-sign-up.html" class="text-primary">Sign Up</a>
-                </p>-->
+
+                <button type="submit" class="btn btn-primary" [disabled]="isSubmitting()">
+                  {{ isSubmitting() ? 'Signing in...' : 'Sign In' }}
+                </button>
               </form>
             </div>
           </div>

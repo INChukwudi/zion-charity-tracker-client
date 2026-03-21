@@ -3,20 +3,20 @@ import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
-import { SignInComponent } from './sign-in.component';
+import { CreateDonationRecordComponent } from './create-donation-record.component';
 
-describe('SignInComponent', () => {
-  let component: SignInComponent;
-  let fixture: ComponentFixture<SignInComponent>;
+describe('CreateDonationRecordComponent', () => {
+  let component: CreateDonationRecordComponent;
+  let fixture: ComponentFixture<CreateDonationRecordComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SignInComponent],
+      imports: [CreateDonationRecordComponent],
       providers: [provideRouter([]), provideHttpClient(), provideHttpClientTesting()],
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SignInComponent);
+    fixture = TestBed.createComponent(CreateDonationRecordComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

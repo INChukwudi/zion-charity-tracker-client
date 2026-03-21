@@ -1,0 +1,211 @@
+<div class="content-page">
+  <div class="content-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 my-3">
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="navbar-breadcrumb">
+              <h1 class="mb-1">New Donation Record</h1>
+              <p class="mb-md-0">Create donation records and connect them to a beneficiary zone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    @if (errorMessage()) {
+      <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+    }
+
+    <form [formGroup]="donationRecordForm" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <select class="form-control" formControlName="mode" id="mode">
+              <option value="">Select a mode</option>
+              <option value="Program">Program</option>
+              <option value="Seraphic Foundation">Seraphic Foundation</option>
+            </select>
+            <label class="form-label" for="mode">Mode*</label>
+          </div>
+          @if (showError('mode')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.mode.errors?.['server'] || 'Mode is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="email" formControlName="email" id="email">
+            <label class="form-label" for="email">Email</label>
+          </div>
+          @if (showError('email')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.email.errors?.['server'] || 'Enter a valid email address.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="text" formControlName="firstName" id="firstName">
+            <label class="form-label" for="firstName">First Name*</label>
+          </div>
+          @if (showError('firstName')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.firstName.errors?.['server'] || 'First name is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="text" formControlName="lastName" id="lastName">
+            <label class="form-label" for="lastName">Last Name*</label>
+          </div>
+          @if (showError('lastName')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.lastName.errors?.['server'] || 'Last name is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="text" formControlName="phoneNumber" id="phoneNumber">
+            <label class="form-label" for="phoneNumber">Phone Number*</label>
+          </div>
+          @if (showError('phoneNumber')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.phoneNumber.errors?.['server'] || 'Phone number must be at least 7 characters long.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <select class="form-control" formControlName="gender" id="gender">
+              <option value="">Select gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+            <label class="form-label" for="gender">Gender*</label>
+          </div>
+          @if (showError('gender')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.gender.errors?.['server'] || 'Gender is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="date" formControlName="dateOfBirth" id="dateOfBirth">
+            <label class="form-label" for="dateOfBirth">Date of Birth*</label>
+          </div>
+          @if (showError('dateOfBirth')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.dateOfBirth.errors?.['server'] || 'Date of birth is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="text" formControlName="country" id="country">
+            <label class="form-label" for="country">Country*</label>
+          </div>
+          @if (showError('country')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.country.errors?.['server'] || 'Country is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="text" formControlName="state" id="state">
+            <label class="form-label" for="state">State*</label>
+          </div>
+          @if (showError('state')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.state.errors?.['server'] || 'State is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-8">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="text" formControlName="streetAddress" id="streetAddress">
+            <label class="form-label" for="streetAddress">Street Address*</label>
+          </div>
+          @if (showError('streetAddress')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.streetAddress.errors?.['server'] || 'Street address is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-4">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="text" formControlName="postalCode" id="postalCode">
+            <label class="form-label" for="postalCode">Postal Code</label>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <select class="form-control" formControlName="zoneId" id="zoneId" [disabled]="isLoadingZones()">
+              <option [ngValue]="0">{{ isLoadingZones() ? 'Loading beneficiaries...' : 'Select beneficiary zone' }}</option>
+              @for (zone of zones(); track zone.id) {
+                <option [ngValue]="zone.id">{{ zone.name }} - {{ zone.state }}</option>
+              }
+            </select>
+            <label class="form-label" for="zoneId">Zone*</label>
+          </div>
+          @if (showError('zoneId')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.zoneId.errors?.['server'] || 'Select a beneficiary zone.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <input class="form-control" type="number" min="1" formControlName="amount" id="amount">
+            <label class="form-label" for="amount">Donation Amount*</label>
+          </div>
+          @if (showError('amount')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.amount.errors?.['server'] || 'Amount must be greater than zero.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <select class="form-control" formControlName="donationCategory" id="donationCategory">
+              <option value="">Select donation category</option>
+              <option value="Business Support">Business Support</option>
+              <option value="Family Support">Family Support</option>
+              <option value="Housing Support">Housing Support</option>
+              <option value="Gift">Gift</option>
+              <option value="Others">Others</option>
+            </select>
+            <label class="form-label" for="donationCategory">Donation Category*</label>
+          </div>
+          @if (showError('donationCategory')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.donationCategory.errors?.['server'] || 'Donation category is required.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-6">
+          <div class="floating-input form-group mb-4">
+            <select class="form-control" formControlName="followUpRequired" id="followUpRequired">
+              <option [ngValue]="true">Yes</option>
+              <option [ngValue]="false">No</option>
+            </select>
+            <label class="form-label" for="followUpRequired">Follow Up Visit*</label>
+          </div>
+          @if (showError('followUpRequired')) {
+            <small class="text-danger d-block mb-3">{{ donationRecordForm.controls.followUpRequired.errors?.['server'] || 'Select a follow-up preference.' }}</small>
+          }
+        </div>
+
+        <div class="col-lg-12">
+          <div class="floating-input form-group mb-4">
+            <textarea class="form-control" rows="5" formControlName="notes" id="notes"></textarea>
+            <label class="form-label" for="notes">Additional Notes</label>
+          </div>
+        </div>
+
+        <div class="col-lg-12 d-flex justify-content-end">
+          <button type="submit" class="btn btn-primary" [disabled]="isSubmitting() || isLoadingZones()">
+            {{ isSubmitting() ? 'Saving...' : 'Submit' }}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
