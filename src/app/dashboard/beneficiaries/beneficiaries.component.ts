@@ -1,53 +1,112 @@
-import { Component, DestroyRef, inject, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
+import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ApiErrorResponse } from '../../core/models/api.models';
-import { Zone } from '../services/dashboard.models';
-import { ZonesService } from '../services/zones.service';
+import { BeneficiaryListItem } from '../services/dashboard.models';
+import { BeneficiariesService } from '../services/beneficiaries.service';
 
 @Component({
   selector: 'app-beneficiaries',
-  imports: [
-    FormsModule,
-  ],
+  imports: [CommonModule, FormsModule, RouterLink, NgbPaginationModule],
   templateUrl: './beneficiaries.component.html',
   styleUrl: './beneficiaries.component.scss'
 })
 export class BeneficiariesComponent {
-  private readonly zonesService = inject(ZonesService);
+  private readonly beneficiariesService = inject(BeneficiariesService);
   private readonly destroyRef = inject(DestroyRef);
 
-  protected readonly beneficiaries = signal<Zone[]>([]);
+  protected readonly beneficiaries = signal<BeneficiaryListItem[]>([]);
   protected readonly isLoading = signal(true);
   protected readonly errorMessage = signal<string | null>(null);
-  protected readonly totalBeneficiaries= signal(0);
+  protected readonly totalBeneficiaries = signal(0);
+  protected readonly pageIndex = signal(0);
+  protected readonly pageSize = signal(10);
+  protected readonly totalPages = signal(0);
+  protected readonly pageSizeOptions = [10, 20, 50];
   protected searchTerm = '';
+
+  protected readonly currentPage = computed(() => this.pageIndex() + 1);
+  protected readonly startItem = computed(() => {
+    if (this.totalBeneficiaries() === 0) {
+      return 0;
+    }
+
+    return this.pageIndex() * this.pageSize() + 1;
+  });
+  protected readonly endItem = computed(() => {
+    if (this.totalBeneficiaries() === 0) {
+      return 0;
+    }
+
+    return Math.min(this.totalBeneficiaries(), this.pageIndex() * this.pageSize() + this.beneficiaries().length);
+  });
 
   constructor() {
     this.loadBeneficiaries();
   }
 
   protected searchBeneficiaries() {
-    this.loadBeneficiaries(this.searchTerm);
-  }
-
-  protected clearSearch() {
-    this.searchTerm = '';
+    this.pageIndex.set(0);
     this.loadBeneficiaries();
   }
 
-  private loadBeneficiaries(search?: string) {
+  protected clearFilters() {
+    this.searchTerm = '';
+    this.pageIndex.set(0);
+    this.loadBeneficiaries();
+  }
+
+  protected changePage(page: number) {
+    const nextPageIndex = Math.max(page - 1, 0);
+    if (nextPageIndex === this.pageIndex()) {
+      return;
+    }
+
+    this.pageIndex.set(nextPageIndex);
+    this.loadBeneficiaries();
+  }
+
+  protected changePageSize(pageSize: string | number) {
+    const normalizedPageSize = Number(pageSize);
+    if (Number.isNaN(normalizedPageSize) || normalizedPageSize <= 0 || normalizedPageSize === this.pageSize()) {
+      return;
+    }
+
+    this.pageSize.set(normalizedPageSize);
+    this.pageIndex.set(0);
+    this.loadBeneficiaries();
+  }
+
+  protected trackBeneficiary(_index: number, beneficiary: BeneficiaryListItem) {
+    return beneficiary.id;
+  }
+
+  private loadBeneficiaries() {
     this.isLoading.set(true);
     this.errorMessage.set(null);
 
-    this.zonesService
-      .list({ page: 1, pageSize: 24, search })
+    const search = this.searchTerm.trim();
+
+    this.beneficiariesService
+      .list({
+        pageIndex: this.pageIndex(),
+        pageSize: this.pageSize(),
+        search: search || undefined,
+      })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (response) => {
           this.beneficiaries.set(response.items);
-          this.totalBeneficiaries.set(response.total);
+          this.totalBeneficiaries.set(response.totalItems ?? response.total);
+          this.totalPages.set(
+            response.totalPages ??
+              (response.total > 0 ? Math.ceil(response.total / this.pageSize()) : 0)
+          );
+          this.pageIndex.set(response.pageIndex ?? Math.max(response.page - 1, 0));
           this.isLoading.set(false);
         },
         error: (error: unknown) => {

@@ -5,7 +5,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ApiErrorResponse } from '../../core/models/api.models';
-import { DonationRecordCreatePayload, Zone } from '../services/dashboard.models';
+import { DonationRecordCreatePayload, ZoneOption } from '../services/dashboard.models';
 import { DonationRecordsService } from '../services/donation-records.service';
 import { ZonesService } from '../services/zones.service';
 
@@ -24,7 +24,7 @@ export class CreateDonationRecordComponent {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
 
-  protected readonly zones = signal<Zone[]>([]);
+  protected readonly zones = signal<ZoneOption[]>([]);
   protected readonly isLoadingZones = signal(true);
   protected readonly isSubmitting = signal(false);
   protected readonly errorMessage = signal<string | null>(null);
@@ -72,7 +72,7 @@ export class CreateDonationRecordComponent {
           await Swal.fire({
             icon: 'success',
             title: 'Success',
-            text: 'Donation record created successfully.',
+            text: 'Beneficiary and donation record created successfully.',
           });
           await this.router.navigate(['/dashboard/appointments']);
         },
@@ -97,7 +97,7 @@ export class CreateDonationRecordComponent {
     this.isLoadingZones.set(true);
 
     this.zonesService
-      .list({ page: 1, pageSize: 100, isActive: true })
+      .listOptions()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (response) => {
@@ -115,22 +115,26 @@ export class CreateDonationRecordComponent {
     const rawValue = this.donationRecordForm.getRawValue();
 
     return {
-      mode: rawValue.mode || '',
-      firstName: rawValue.firstName || '',
-      lastName: rawValue.lastName || '',
-      email: rawValue.email || null,
-      phoneNumber: rawValue.phoneNumber || '',
-      gender: (rawValue.gender || 'female') as DonationRecordCreatePayload['gender'],
-      dateOfBirth: rawValue.dateOfBirth || '',
-      streetAddress: rawValue.streetAddress || '',
-      postalCode: rawValue.postalCode || null,
-      country: rawValue.country || '',
-      state: rawValue.state || '',
-      zoneId: Number(rawValue.zoneId || 0),
-      amount: Number(rawValue.amount || 0),
-      donationCategory: rawValue.donationCategory || '',
-      followUpRequired: Boolean(rawValue.followUpRequired),
-      notes: rawValue.notes || null,
+      beneficiary: {
+        firstName: rawValue.firstName || '',
+        lastName: rawValue.lastName || '',
+        email: rawValue.email || null,
+        phoneNumber: rawValue.phoneNumber || '',
+        gender: (rawValue.gender || 'female') as DonationRecordCreatePayload['beneficiary']['gender'],
+        dateOfBirth: rawValue.dateOfBirth || '',
+        streetAddress: rawValue.streetAddress || '',
+        postalCode: rawValue.postalCode || null,
+        country: rawValue.country || '',
+        state: rawValue.state || '',
+        zoneId: Number(rawValue.zoneId || 0),
+      },
+      donationRecord: {
+        mode: rawValue.mode || '',
+        amount: Number(rawValue.amount || 0),
+        donationCategory: rawValue.donationCategory || '',
+        followUpRequired: Boolean(rawValue.followUpRequired),
+        notes: rawValue.notes || null,
+      },
     };
   }
 
@@ -143,7 +147,8 @@ export class CreateDonationRecordComponent {
 
     const apiError = error.error as ApiErrorResponse;
     for (const detail of apiError.details || []) {
-      const controlName = detail.path.replace('body.', '') as keyof typeof this.donationRecordForm.controls;
+      const normalizedPath = detail.path.replace('body.', '');
+      const controlName = normalizedPath.split('.').at(-1) as keyof typeof this.donationRecordForm.controls;
       const control = this.donationRecordForm.controls[controlName];
       if (!control) {
         continue;

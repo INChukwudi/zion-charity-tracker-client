@@ -1,0 +1,161 @@
+[33m>[39m Building...
+[32m√[39m Building...
+[1mInitial chunk files[22m                          [2m | [22m[1mNames[22m                                     [2m | [22m [1mRaw size[22m
+[32mchunk-7LKOJCHT.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m  [36m2.45 MB[39m[2m | [22m
+[32mpolyfills.js[39m                                 [2m | [22m[2mpolyfills[22m                                 [2m | [22m  [36m1.01 MB[39m[2m | [22m
+[32mchunk-XPNV3CI3.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m[36m548.78 kB[39m[2m | [22m
+[32mspec-index.component.spec.js[39m                 [2m | [22m[2mspec-index.component.spec[22m                 [2m | [22m[36m475.49 kB[39m[2m | [22m
+[32mchunk-YKEHRZGV.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m[36m239.15 kB[39m[2m | [22m
+[32mchunk-MCM2KOLW.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m[36m229.07 kB[39m[2m | [22m
+[32mspec-create-donation-record.component.spec.js[39m[2m | [22m[2mspec-create-donation-record.component.spec[22m[2m | [22m[36m174.47 kB[39m[2m | [22m
+[32mchunk-ZPWZJKI3.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m[36m112.03 kB[39m[2m | [22m
+[32mjasmine-cleanup-1.js[39m                         [2m | [22m[2mjasmine-cleanup-1[22m                         [2m | [22m [36m65.95 kB[39m[2m | [22m
+[32mspec-layout.component.spec.js[39m                [2m | [22m[2mspec-layout.component.spec[22m                [2m | [22m [36m33.43 kB[39m[2m | [22m
+[32mspec-zones.component.spec.js[39m                 [2m | [22m[2mspec-zones.component.spec[22m                 [2m | [22m [36m24.52 kB[39m[2m | [22m
+[32mtest_main.js[39m                                 [2m | [22m[2mtest_main[22m                                 [2m | [22m [36m21.69 kB[39m[2m | [22m
+[32mspec-beneficiary-details.component.spec.js[39m   [2m | [22m[2mspec-beneficiary-details.component.spec[22m   [2m | [22m [36m16.24 kB[39m[2m | [22m
+[32mspec-beneficiaries.component.spec.js[39m         [2m | [22m[2mspec-beneficiaries.component.spec[22m         [2m | [22m [36m13.88 kB[39m[2m | [22m
+[32mchunk-JTVVCZOA.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m [36m12.37 kB[39m[2m | [22m
+[32mspec-appointments.component.spec.js[39m          [2m | [22m[2mspec-appointments.component.spec[22m          [2m | [22m [36m12.21 kB[39m[2m | [22m
+[32mspec-sign-in.component.spec.js[39m               [2m | [22m[2mspec-sign-in.component.spec[22m               [2m | [22m  [36m7.82 kB[39m[2m | [22m
+[32mchunk-3S5COAIF.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m  [36m4.14 kB[39m[2m | [22m
+[32mchunk-J546KSQR.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m  [36m3.44 kB[39m[2m | [22m
+[32mchunk-HBW54YOI.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m  [36m3.02 kB[39m[2m | [22m
+[32mspec-app.component.spec.js[39m                   [2m | [22m[2mspec-app.component.spec[22m                   [2m | [22m  [36m2.93 kB[39m[2m | [22m
+[32mspec-auth.guard.spec.js[39m                      [2m | [22m[2mspec-auth.guard.spec[22m                      [2m | [22m  [36m2.57 kB[39m[2m | [22m
+[32mchunk-NEGHBWJS.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m  [36m1.40 kB[39m[2m | [22m
+[32mchunk-7BBG6OFE.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m  [36m1.35 kB[39m[2m | [22m
+[32mchunk-T26TOESK.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m  [36m1.34 kB[39m[2m | [22m
+[32mchunk-IEJHM63U.js[39m                            [2m | [22m[2m-[22m                                         [2m | [22m[36m781 bytes[39m[2m | [22m
+[32mjasmine-cleanup-0.js[39m                         [2m | [22m[2mjasmine-cleanup-0[22m                         [2m | [22m[36m519 bytes[39m[2m | [22m
+[32mstyles.css[39m                                   [2m | [22m[2mstyles[22m                                    [2m | [22m [36m96 bytes[39m[2m | [22m
+
+[1m [22m                                            [2m | [22m[1mInitial total[22m                             [2m | [22m  [1m5.47 MB[22m
+
+Application bundle generation complete. [2.764 seconds]
+
+[32m22 03 2026 16:20:14.266:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
+[32m22 03 2026 16:20:14.268:INFO [launcher]: [39mLaunching browsers ChromeHeadless with concurrency unlimited
+[32m22 03 2026 16:20:14.284:INFO [launcher]: [39mStarting browser ChromeHeadless
+[32m22 03 2026 16:20:15.248:INFO [Chrome Headless 146.0.0.0 (Windows 10)]: [39mConnected on socket qX3NK1nEVG8TNbJsAAAB with id 22546948
+Chrome Headless 146.0.0.0 (Windows 10): Executed 0 of 19[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 1 of 19[32m SUCCESS[39m (0 secs / 0.05 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 2 of 19[32m SUCCESS[39m (0 secs / 0.054 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 3 of 19[32m SUCCESS[39m (0 secs / 0.056 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 4 of 19[32m SUCCESS[39m (0 secs / 0.057 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 5 of 19[32m SUCCESS[39m (0 secs / 0.058 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 6 of 19[32m SUCCESS[39m (0 secs / 0.059 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 7 of 19[32m SUCCESS[39m (0 secs / 0.087 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 8 of 19[32m SUCCESS[39m (0 secs / 0.099 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 9 of 19[32m SUCCESS[39m (0 secs / 0.135 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 10 of 19[32m SUCCESS[39m (0 secs / 0.149 secs)
+[1A[2KWARN: [36m'
+  It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true
+  when you set up this control in your component class, the disabled attribute will actually be set in the DOM for
+  you. We recommend using this approach to avoid 'changed after checked' errors.
+
+  Example:
+  // Specify the `disabled` property at control creation time:
+  form = new FormGroup({
+    first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
+    last: new FormControl('Drew', Validators.required)
+  });
+
+  // Controls can also be enabled/disabled after creation:
+  form.get('first')?.enable();
+  form.get('last')?.disable();
+'[39m
+Chrome Headless 146.0.0.0 (Windows 10): Executed 10 of 19[32m SUCCESS[39m (0 secs / 0.149 secs)
+WARN: '
+  It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true
+  when you set up this control in your component class, the disabled attribute will actually be set in the DOM for
+  you. We recommend using this approach to avoid 'changed after checked' errors.
+
+  Example:
+  // Specify the `disabled` property at control creation time:
+  form = new FormGroup({
+    first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
+    last: new FormControl('Drew', Validators.required)
+  });
+
+  // Controls can also be enabled/disabled after creation:
+  form.get('first')?.enable();
+  form.get('last')?.disable();
+'
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 11 of 19[32m SUCCESS[39m (0 secs / 0.186 secs)
+[1A[2KWARN: [36m'
+  It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true
+  when you set up this control in your component class, the disabled attribute will actually be set in the DOM for
+  you. We recommend using this approach to avoid 'changed after checked' errors.
+
+  Example:
+  // Specify the `disabled` property at control creation time:
+  form = new FormGroup({
+    first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
+    last: new FormControl('Drew', Validators.required)
+  });
+
+  // Controls can also be enabled/disabled after creation:
+  form.get('first')?.enable();
+  form.get('last')?.disable();
+'[39m
+Chrome Headless 146.0.0.0 (Windows 10): Executed 11 of 19[32m SUCCESS[39m (0 secs / 0.186 secs)
+WARN: '
+  It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true
+  when you set up this control in your component class, the disabled attribute will actually be set in the DOM for
+  you. We recommend using this approach to avoid 'changed after checked' errors.
+
+  Example:
+  // Specify the `disabled` property at control creation time:
+  form = new FormGroup({
+    first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
+    last: new FormControl('Drew', Validators.required)
+  });
+
+  // Controls can also be enabled/disabled after creation:
+  form.get('first')?.enable();
+  form.get('last')?.disable();
+'
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 12 of 19[32m SUCCESS[39m (0 secs / 0.193 secs)
+[1A[2KWARN: [36m'
+  It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true
+  when you set up this control in your component class, the disabled attribute will actually be set in the DOM for
+  you. We recommend using this approach to avoid 'changed after checked' errors.
+
+  Example:
+  // Specify the `disabled` property at control creation time:
+  form = new FormGroup({
+    first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
+    last: new FormControl('Drew', Validators.required)
+  });
+
+  // Controls can also be enabled/disabled after creation:
+  form.get('first')?.enable();
+  form.get('last')?.disable();
+'[39m
+Chrome Headless 146.0.0.0 (Windows 10): Executed 12 of 19[32m SUCCESS[39m (0 secs / 0.193 secs)
+WARN: '
+  It looks like you're using the disabled attribute with a reactive form directive. If you set disabled to true
+  when you set up this control in your component class, the disabled attribute will actually be set in the DOM for
+  you. We recommend using this approach to avoid 'changed after checked' errors.
+
+  Example:
+  // Specify the `disabled` property at control creation time:
+  form = new FormGroup({
+    first: new FormControl({value: 'Nancy', disabled: true}, Validators.required),
+    last: new FormControl('Drew', Validators.required)
+  });
+
+  // Controls can also be enabled/disabled after creation:
+  form.get('first')?.enable();
+  form.get('last')?.disable();
+'
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 13 of 19[32m SUCCESS[39m (0 secs / 0.201 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 14 of 19[32m SUCCESS[39m (0 secs / 0.275 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 15 of 19[32m SUCCESS[39m (0 secs / 0.294 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 16 of 19[32m SUCCESS[39m (0 secs / 0.317 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 17 of 19[32m SUCCESS[39m (0 secs / 0.327 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 18 of 19[32m SUCCESS[39m (0 secs / 0.329 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 19 of 19[32m SUCCESS[39m (0 secs / 0.33 secs)
+[1A[2KChrome Headless 146.0.0.0 (Windows 10): Executed 19 of 19[32m SUCCESS[39m (0.357 secs / 0.33 secs)
+[32mTOTAL: 19 SUCCESS[39m

@@ -1,0 +1,20 @@
+[33m>[39m Building...
+[32m√[39m Building...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m
+[32mchunk-CTQ42ND5.js[39m  [2m | [22m[2m-[22m               [2m | [22m  [36m1.40 MB[39m[2m | [22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m          [2m | [22m[36m954.39 kB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m       [2m | [22m [36m91.75 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m            [2m | [22m  [36m2.81 kB[39m[2m | [22m
+[32mchunk-HOM7OTZI.js[39m  [2m | [22m[2m-[22m               [2m | [22m[36m623 bytes[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m   [2m | [22m  [1m2.45 MB[22m
+
+[1mLazy chunk files[22m   [2m | [22m[1mNames[22m           [2m | [22m [1mRaw size[22m
+[32mchunk-EZT5VSFJ.js[39m  [2m | [22m[2mdashboard-routes[22m[2m | [22m  [36m1.36 MB[39m[2m | [22m
+[32mchunk-S7RP7XHP.js[39m  [2m | [22m[2m-[22m               [2m | [22m[36m224.98 kB[39m[2m | [22m
+[32mchunk-3WAAL23Q.js[39m  [2m | [22m[2mauth-routes[22m     [2m | [22m [36m11.82 kB[39m[2m | [22m
+
+Application bundle generation complete. [5.181 seconds]
+
+Output location: C:\Users\DELL\Documents\WebProjects\zion-charity-tracker\zion-charity-tracker-client\dist\zion-charity-tracker-client
+

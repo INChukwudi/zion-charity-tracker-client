@@ -140,9 +140,9 @@
         <div class="col-lg-6">
           <div class="floating-input form-group mb-4">
             <select class="form-control" formControlName="zoneId" id="zoneId" [disabled]="isLoadingZones()">
-              <option [ngValue]="0">{{ isLoadingZones() ? 'Loading beneficiaries...' : 'Select beneficiary zone' }}</option>
+              <option [ngValue]="0">{{ isLoadingZones() ? 'Loading zones...' : 'Select beneficiary zone' }}</option>
               @for (zone of zones(); track zone.id) {
-                <option [ngValue]="zone.id">{{ zone.name }} - {{ zone.state }}</option>
+                <option [ngValue]="zone.id">{{ zone.name }}, {{ zone.country }}</option>
               }
             </select>
             <label class="form-label" for="zoneId">Zone*</label>

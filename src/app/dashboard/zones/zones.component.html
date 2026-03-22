@@ -1,0 +1,219 @@
+<div class="content-page">
+  <div class="content-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 my-3">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div class="navbar-breadcrumb">
+              <h1 class="mb-1">Zones</h1>
+              <p class="mb-md-0">Browse all beneficiary zones with clear pagination and zone activity counts.</p>
+            </div>
+
+            <div class="d-flex flex-column align-items-md-end gap-2">
+              <div class="text-right">
+                <div class="h4 mb-0">{{ totalZones() }}</div>
+                <small class="text-muted">Total zones</small>
+              </div>
+              <button class="btn btn-primary" type="button" (click)="toggleCreateForm()">
+                {{ isCreateFormOpen() ? 'Close add zone form' : 'Add zone' }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    @if (createSuccessMessage()) {
+      <div class="alert alert-success" role="alert">{{ createSuccessMessage() }}</div>
+    }
+
+    @if (isCreateFormOpen()) {
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-start gap-3 mb-4">
+            <div>
+              <h4 class="mb-1">Add a new zone</h4>
+              <p class="text-muted mb-0">Only the zone name and country are required. Other required database fields are handled safely by the server.</p>
+            </div>
+          </div>
+
+          @if (createErrorMessage()) {
+            <div class="alert alert-danger" role="alert">{{ createErrorMessage() }}</div>
+          }
+
+          <form [formGroup]="createZoneForm" (ngSubmit)="submitCreateZone()" novalidate>
+            <div class="row">
+              <div class="col-lg-5 mb-3">
+                <label class="form-label" for="zone-name">Zone name</label>
+                <input
+                  id="zone-name"
+                  class="form-control"
+                  type="text"
+                  formControlName="name"
+                  placeholder="Enter zone name"
+                >
+                @if (createZoneForm.controls.name.invalid && createZoneForm.controls.name.touched) {
+                  <small class="text-danger d-block mt-2">Zone name is required.</small>
+                }
+              </div>
+
+              <div class="col-lg-5 mb-3">
+                <label class="form-label" for="zone-country">Country</label>
+                <select
+                  id="zone-country"
+                  class="form-control"
+                  formControlName="country"
+                >
+                  <option value="">Select a country</option>
+                  @for (country of countryOptions; track country) {
+                    <option [value]="country">{{ country }}</option>
+                  }
+                </select>
+                @if (createZoneForm.controls.country.invalid && createZoneForm.controls.country.touched) {
+                  <small class="text-danger d-block mt-2">Country is required.</small>
+                }
+              </div>
+
+              <div class="col-lg-2 mb-3 d-flex align-items-end">
+                <button class="btn btn-success btn-block" type="submit" [disabled]="isSubmittingCreate()">
+                  {{ isSubmittingCreate() ? 'Saving...' : 'Save zone' }}
+                </button>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-outline-secondary" type="button" (click)="cancelCreateZone()" [disabled]="isSubmittingCreate()">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    }
+
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row align-items-end">
+          <div class="col-lg-6 mb-3 mb-lg-0">
+            <label class="form-label">Search zones</label>
+            <input
+              class="form-control"
+              type="text"
+              [(ngModel)]="searchTerm"
+              placeholder="Search by zone name or city"
+              (keyup.enter)="searchZones()"
+            >
+          </div>
+          <div class="col-sm-6 col-lg-2 mb-3 mb-lg-0">
+            <label class="form-label">Page size</label>
+            <select
+              class="form-control"
+              [ngModel]="pageSize()"
+              (ngModelChange)="changePageSize($event)"
+            >
+              @for (size of pageSizeOptions; track size) {
+                <option [ngValue]="size">{{ size }}</option>
+              }
+            </select>
+          </div>
+          <div class="col-sm-6 col-lg-4 d-flex gap-2 justify-content-lg-end">
+            <button class="btn btn-primary mr-2" type="button" (click)="searchZones()">Search</button>
+            <button class="btn btn-outline-secondary" type="button" (click)="clearFilters()">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    @if (errorMessage()) {
+      <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+    }
+
+    <div class="card card-block card-stretch card-height">
+      <div class="card-body">
+        @if (isLoading()) {
+          <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-3 mb-0">Loading zones...</p>
+          </div>
+        } @else if (zones().length === 0) {
+          <div class="text-center py-5">
+            <h4 class="mb-2">No zones found</h4>
+            <p class="text-muted mb-0">Try adjusting your search or add your first zone above.</p>
+          </div>
+        } @else {
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-3 gap-2">
+            <div>
+              <h4 class="mb-1">Zones directory</h4>
+              <p class="text-muted mb-0">
+                Showing {{ startItem() }} - {{ endItem() }} of {{ totalZones() }} zones
+              </p>
+            </div>
+            <span class="badge badge-light border px-3 py-2">Page {{ currentPage() }} of {{ totalPages() || 1 }}</span>
+          </div>
+
+          <div class="table-responsive zones-table">
+            <table class="table mb-0">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Zone</th>
+                  <th>Location</th>
+                  <th>Status</th>
+                  <th>Donation records</th>
+                  <th>Appointments</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (zone of zones(); track trackZone($index, zone); let index = $index) {
+                  <tr>
+                    <td>{{ pageIndex() * pageSize() + index + 1 }}</td>
+                    <td>
+                      <div class="font-weight-600">{{ zone.name }}</div>
+                      <small class="text-muted">Created {{ zone.createdAt | date:'mediumDate' }}</small>
+                    </td>
+                    <td>
+                      <div>{{ zone.city || '—' }}</div>
+                      <small class="text-muted">{{ zone.state }}, {{ zone.country }}</small>
+                    </td>
+                    <td>
+                      <span class="badge" [class.badge-success]="zone.isActive" [class.badge-secondary]="!zone.isActive">
+                        {{ zone.isActive ? 'Active' : 'Inactive' }}
+                      </span>
+                    </td>
+                    <td>{{ zone.donationRecordCount }}</td>
+                    <td>{{ zone.appointmentCount }}</td>
+                    <td>
+                      <span class="notes-cell" [title]="zone.notes || 'No notes available'">
+                        {{ zone.notes || 'No notes available' }}
+                      </span>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mt-4 gap-3">
+            <p class="text-muted mb-0">Use the pager to navigate through all saved zones.</p>
+
+            <ngb-pagination
+              [collectionSize]="totalZones()"
+              [page]="currentPage()"
+              [pageSize]="pageSize()"
+              [maxSize]="5"
+              [rotate]="true"
+              [boundaryLinks]="true"
+              [ellipses]="false"
+              [disabled]="isLoading()"
+              (pageChange)="changePage($event)"
+            />
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+

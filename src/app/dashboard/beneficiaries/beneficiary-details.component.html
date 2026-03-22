@@ -1,0 +1,191 @@
+<div class="content-page">
+  <div class="content-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 my-3">
+          <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div class="navbar-breadcrumb">
+              <h1 class="mb-1">Beneficiary details</h1>
+              <p class="mb-md-0">Review personal information, donation history, and follow-up appointments for this beneficiary.</p>
+            </div>
+
+            <a class="btn btn-outline-primary" routerLink="/dashboard/beneficiaries">Back to beneficiaries</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    @if (errorMessage()) {
+      <div class="alert alert-danger" role="alert">{{ errorMessage() }}</div>
+    }
+
+    @if (isLoading()) {
+      <div class="card">
+        <div class="card-body text-center py-5">
+          <div class="spinner-border text-primary" role="status"></div>
+          <p class="mt-3 mb-0">Loading beneficiary details...</p>
+        </div>
+      </div>
+    } @else {
+      @if (beneficiary(); as beneficiaryData) {
+        <div class="row">
+          <div class="col-xl-4 col-lg-5">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h4 class="mb-1">{{ beneficiaryData.fullName }}</h4>
+                <p class="text-muted mb-4 text-capitalize">{{ beneficiaryData.gender }}</p>
+
+                <div class="detail-list">
+                  <div>
+                    <span class="detail-label">Email</span>
+                    <div>{{ beneficiaryData.email || 'No email provided' }}</div>
+                  </div>
+                  <div>
+                    <span class="detail-label">Phone</span>
+                    <div>{{ beneficiaryData.phoneNumber }}</div>
+                  </div>
+                  <div>
+                    <span class="detail-label">Date of birth</span>
+                    <div>{{ beneficiaryData.dateOfBirth | date:'mediumDate' }}</div>
+                  </div>
+                  <div>
+                    <span class="detail-label">Address</span>
+                    <div>{{ beneficiaryData.streetAddress }}</div>
+                    <small class="text-muted">{{ beneficiaryData.state }}, {{ beneficiaryData.country }} {{ beneficiaryData.postalCode || '' }}</small>
+                  </div>
+                  <div>
+                    <span class="detail-label">Zone</span>
+                    <div>{{ beneficiaryData.zoneName }}</div>
+                  </div>
+                  <div>
+                    <span class="detail-label">Created</span>
+                    <div>{{ beneficiaryData.createdAt | date:'medium' }}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-xl-8 col-lg-7">
+            @if (summary(); as summaryData) {
+              <div class="row">
+                <div class="col-md-4 mb-4">
+                  <div class="card summary-card h-100">
+                    <div class="card-body">
+                      <span class="detail-label">Total donated</span>
+                      <h3 class="mb-0">{{ summaryData.totalDonated | currency:'NGN':'symbol':'1.0-0' }}</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                  <div class="card summary-card h-100">
+                    <div class="card-body">
+                      <span class="detail-label">Donation records</span>
+                      <h3 class="mb-0">{{ summaryData.donationRecordCount }}</h3>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                  <div class="card summary-card h-100">
+                    <div class="card-body">
+                      <span class="detail-label">Follow-up appointments</span>
+                      <h3 class="mb-0">{{ summaryData.appointmentCount }}</h3>
+                      <small class="text-muted">Last donation: {{ summaryData.lastDonationAt ? (summaryData.lastDonationAt | date:'mediumDate') : '—' }}</small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                    <h4 class="mb-1">Donation history</h4>
+                    <p class="text-muted mb-0">All donation records linked to this beneficiary.</p>
+                  </div>
+                </div>
+
+                @if (donationRecords().length === 0) {
+                  <p class="text-muted mb-0">No donation history found.</p>
+                } @else {
+                  <div class="table-responsive details-table">
+                    <table class="table mb-0">
+                      <thead>
+                        <tr>
+                          <th>Created</th>
+                          <th>Mode</th>
+                          <th>Category</th>
+                          <th>Amount</th>
+                          <th>Follow-up</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for (donationRecord of donationRecords(); track trackDonationRecord($index, donationRecord)) {
+                          <tr>
+                            <td>{{ donationRecord.createdAt | date:'mediumDate' }}</td>
+                            <td>{{ donationRecord.mode }}</td>
+                            <td>{{ donationRecord.donationCategory }}</td>
+                            <td class="font-weight-600">{{ donationRecord.amount | currency:'NGN':'symbol':'1.0-0' }}</td>
+                            <td>
+                              <span class="badge" [class.badge-success]="donationRecord.followUpRequired" [class.badge-secondary]="!donationRecord.followUpRequired">
+                                {{ donationRecord.followUpRequired ? donationRecord.followUpCount + ' appointment(s)' : 'Not required' }}
+                              </span>
+                            </td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                }
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <div>
+                    <h4 class="mb-1">Follow-up appointments</h4>
+                    <p class="text-muted mb-0">Appointments linked through this beneficiary's donation records.</p>
+                  </div>
+                </div>
+
+                @if (appointments().length === 0) {
+                  <p class="text-muted mb-0">No follow-up appointments found.</p>
+                } @else {
+                  <div class="table-responsive details-table">
+                    <table class="table mb-0">
+                      <thead>
+                        <tr>
+                          <th>Scheduled</th>
+                          <th>Status</th>
+                          <th>Contact method</th>
+                          <th>Zone</th>
+                          <th>Donation record</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @for (appointment of appointments(); track trackAppointment($index, appointment)) {
+                          <tr>
+                            <td>{{ appointment.scheduledFor | date:'medium' }}</td>
+                            <td class="text-capitalize">{{ appointment.status }}</td>
+                            <td class="text-capitalize">{{ appointment.contactMethod }}</td>
+                            <td>{{ appointment.zoneName }}</td>
+                            <td>#{{ appointment.donationRecordId }}</td>
+                          </tr>
+                        }
+                      </tbody>
+                    </table>
+                  </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      }
+    }
+  </div>
+</div>
+

@@ -3,7 +3,13 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { API_BASE_URL } from '../../core/config/api-base-url.token';
 import { toHttpParams } from '../../core/models/api.models';
-import { ZoneListQuery, ZoneListResponse } from './dashboard.models';
+import {
+  ZoneCreatePayload,
+  ZoneCreateResponse,
+  ZoneListQuery,
+  ZoneListResponse,
+  ZoneOptionsResponse,
+} from './dashboard.models';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +22,15 @@ export class ZonesService {
     return this.http.get<ZoneListResponse>(`${this.apiBaseUrl}/zones`, {
       params: toHttpParams({ ...query }),
     });
+  }
+
+  listOptions(query: { isActive?: boolean } = {}): Observable<ZoneOptionsResponse> {
+    return this.http.get<ZoneOptionsResponse>(`${this.apiBaseUrl}/zones/options`, {
+      params: toHttpParams({ ...query }),
+    });
+  }
+
+  create(payload: ZoneCreatePayload): Observable<ZoneCreateResponse> {
+    return this.http.post<ZoneCreateResponse>(`${this.apiBaseUrl}/zones`, payload);
   }
 }
