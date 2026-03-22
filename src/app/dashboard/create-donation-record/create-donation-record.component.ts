@@ -118,12 +118,12 @@ export class CreateDonationRecordComponent {
       beneficiary: {
         firstName: rawValue.firstName || '',
         lastName: rawValue.lastName || '',
-        email: rawValue.email || null,
+        email: rawValue.email || '',
         phoneNumber: rawValue.phoneNumber || '',
         gender: (rawValue.gender || 'female') as DonationRecordCreatePayload['beneficiary']['gender'],
         dateOfBirth: rawValue.dateOfBirth || '',
         streetAddress: rawValue.streetAddress || '',
-        postalCode: rawValue.postalCode || null,
+        postalCode: rawValue.postalCode || '',
         country: rawValue.country || '',
         state: rawValue.state || '',
         zoneId: Number(rawValue.zoneId || 0),
@@ -133,7 +133,7 @@ export class CreateDonationRecordComponent {
         amount: Number(rawValue.amount || 0),
         donationCategory: rawValue.donationCategory || '',
         followUpRequired: Boolean(rawValue.followUpRequired),
-        notes: rawValue.notes || null,
+        notes: rawValue.notes || '',
       },
     };
   }
